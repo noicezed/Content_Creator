@@ -27,7 +27,7 @@ async def heartbeat():
 async def marketing(file: UploadFile = File()):
 
     try:
-        with open(PATH_FILES + file.filename, "wb") as myfile:
+        with open(file.filename, "wb") as myfile:
             content = await file.read()
             myfile.write(content)
             myfile.close()
@@ -35,7 +35,7 @@ async def marketing(file: UploadFile = File()):
         # image_content = await file.read()
         market_crew = MarketContent(image_url=PATH_FILES + file.filename)
         response = market_crew.run()
-        os.remove(PATH_FILES + file.filename)
+        os.remove(file.filename)
         return {"detail":f"""{response}"""}
         # return {'message':pil_image}
     except Exception as e:
@@ -47,13 +47,13 @@ async def marketing(query: Query):
     try:
 
         img_data = requests.get(query.image_url).content
-        with open( PATH_FILES + 'image.jpg', 'wb') as handler:
+        with open('image.jpg', 'wb') as handler:
             handler.write(img_data)
         # return {'message':uploaded_file.filename}
         # image_content = await file.read()
         market_crew = MarketContent(image_url = PATH_FILES + 'image.jpg')
         response = market_crew.run()
-        os.remove(PATH_FILES + 'image.jpg')
+        os.remove('image.jpg')
         return {"detail":f"""{(response)}"""}
         # return {'message':image}
     except Exception as e:
