@@ -33,7 +33,7 @@ async def marketing(file: UploadFile = File()):
             myfile.close()
         # return {'message':uploaded_file.filename}
         # image_content = await file.read()
-        market_crew = MarketContent(image_url=PATH_FILES + file.filename)
+        market_crew = MarketContent(image_url=file.filename)
         response = market_crew.run()
         os.remove(file.filename)
         return {"detail":f"""{response}"""}
@@ -51,7 +51,7 @@ async def marketing(query: Query):
             handler.write(img_data)
         # return {'message':uploaded_file.filename}
         # image_content = await file.read()
-        market_crew = MarketContent(image_url = PATH_FILES + 'image.jpg')
+        market_crew = MarketContent(image_url = 'image.jpg')
         response = market_crew.run()
         os.remove('image.jpg')
         return {"detail":f"""{(response)}"""}
