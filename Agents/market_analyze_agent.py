@@ -7,8 +7,8 @@ class MarketAnalyzeAgents:
 
 
     def __init__(self) -> None:
-        self.llm = Retreive().openai_llm()
-        # self.llm = Retreive().gemini_llm()
+        # self.llm = Retreive().openai_llm()
+        self.llm = Retreive().gemini_llm()
 
     
     def market_expert_agent(self):
